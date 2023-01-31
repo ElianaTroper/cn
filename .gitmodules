@@ -1,0 +1,2 @@
+[submodule "server/lib/pidfile"]
+	url = https://github.com/ElianaTroper/pidfile
