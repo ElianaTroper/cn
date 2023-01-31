@@ -1,0 +1,9 @@
+ROOT: {
+	app: {
+		string: READABLE_NAME
+		source: TODO
+	}
+	lastROOT: POINTER_TO_PREVIOUS_ROOT
+}
+
+// TODO: Add a signature validation mechanism

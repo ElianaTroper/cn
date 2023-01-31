@@ -1,0 +1,12 @@
+{
+	"app": {
+		"gutenberg": {
+			"name": "Project Gutenberg",
+			"hash": "/ipfs/bafybeicwrjy4peslxwqihmsj7cq2zopswqhv4fvg6dlrf23mfgdoowxygi"
+		},
+		"wiki": {
+			"name": "Wikipedia",
+			"hash": "/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze"
+		}
+	}
+}

@@ -1,0 +1,86 @@
+{
+  "App": {
+    "Apps": {
+      "Benchmark": {
+        "Enabled": true,
+        "AppSettings": {}
+      },
+      "Library": {
+        "Enabled": true,
+        "AppSettings": {}
+      },
+      "Post": {
+        "Enabled": true,
+        "AppSettings": {}
+      }
+    },
+    "JsAppPath": "$CLIENT/js/app"
+  },
+  "Ipfs": {
+    "Conf": {
+        "Path": "$SERVER/ipfs/mnt/ipfs/config",
+        "Overrides": "$SERVER/ipfs/default.json"
+    },
+    "Rpc-address": "127.0.0.1:5001",
+    "Docker": {
+      "IsDocker": true,
+      "ContainerName": "ipfs",
+      "Network": "ipfs"
+    },
+    "InferAnnounce": true,
+    "Js": {
+      "Conf": {
+          "Path": "$SERVER/ipfs/mnt/ipfs-js/config"
+      },
+      "Docker": {
+        "IsDocker": true,
+        "ContainerName": "ipfs-js",
+        "Network": "ipfs"
+      },
+      "EnableLink": true
+    }
+  },
+  "Network": {
+    "Ip": {
+      ".": null,
+      "Static": false
+    },
+    "Dns": {
+      ".": "cn.troper.report",
+      "Enabled": true,
+      "Has_TLS": true
+    },
+    "Ports": {
+      "User_can_open": true,
+      ".": [
+        {
+          ".": 4001,
+          "Uses": [
+            "ipfs-direct",
+            "ipfs-quic",
+            "ipfs-webtransport"
+          ]
+        },
+        {
+          ".": 4002,
+          "Uses": [
+            "ipfs-websocket"
+          ]
+        }
+      ]
+    }
+  },
+  "Storage": {
+    "Path": "$SERVER/storage",
+    "Size": {
+      ".": 50,
+      "Unit": "GB"
+    }
+  },
+  "Requests": "$SERVER/storage/requests",
+  "Pid": "$SERVER/storage/tmp/.pid",
+  "Root": {
+    "Tick": 5000,
+    "Retain": 1000
+  }
+}

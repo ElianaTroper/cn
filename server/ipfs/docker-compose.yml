@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  ipfs:
+    image: ipfs/kubo:v0.18.0-rc2
+    container_name: ipfs
+    restart: unless-stopped
+    volumes:
+      - ${IPFS_PATH}:/ipfs
+      - ${STORAGE}:/storage
+    environment:
+      - IPFS_PATH=/ipfs
+      - IPFS_PROFILE=badgerds
+    ports:
+      # Swarm listens on all interfaces, so is remotely reachable.
+      - 4001:4001/tcp
+      - 4001:4001/udp # QUIC/WebTransport
+      - 4002:4004/tcp # websocket
+      
+      # The following ports only listen on the loopback interface, so are not remotely reachable by default.
+      # If you want to override these or add more ports, see https://docs.docker.com/compose/extends/ .
+      
+      # API port, which includes admin operations, so you probably don't want this remotely accessible.
+      - 127.0.0.1:5001:5001
+      
+      # HTTP Gateway
+      #- 127.0.0.1:8080:8080
+  ipfs-js:
+  # SEE https://hub.docker.com/r/ipfs/js-ipfs/dockerfile/
+    image: ipfs/js-ipfs
+    container_name: ipfs-js
+    restart: unless-stopped
+    volumes:
+      - ${IPFS_JS_PATH}:/ipfs
+    environment:
+      - IPFS_PATH=/ipfs
+    # We do not pass through any ports for our usage. They are listed below for ease of reference.
+    # ports:
+      # :4002 - used for direct connections. No passthrough for our usage.
+      # :4003 - used for WS connections. No passthrough for our usage.
+      # :5002 - used for API. No passthrough for our usage.
+      # :9090 - used for gateway. No passthrough for our usage.

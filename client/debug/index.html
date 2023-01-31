@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Test</title>
+		
+		<script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+
+		<script type="module">
+const HASH = 'bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze'
+const PATH = '/58wiki'
+console.log('core: creating an ipfs client')
+
+const _node = Ipfs.create()
+
+const node = await _node
+
+
+// let k = await node.swarm.connect('/dns4/gu1.troper.report/tcp/4002/wss/p2p/12D3KooWES7SHYRm6mNLQAwoycPE1snCZrWkSSY2KibbYhYQWDxf')
+// console.log(k)
+
+// console.log(node.config.getAll())
+
+/* const providers = node.dht.findProvs('/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze/wiki/index.html')
+
+for await (const provider of providers) {
+  console.log(provider.id.toString())
+}
+*/
+
+console.log('core: created a node')
+const args = { path: PATH }
+//const args = { path: '/' }
+/*
+console.log(args)
+console.log(node.dag.get(await Ipfs.CID.parse(res)))
+const hash = await node.dag.resolve(Ipfs.CID.parse(res), args)
+console.log(hash)
+const hash2 = await node.dag.get(hash.cid)
+console.log(hash2)
+*/
+
+/*
+for await (const name of node.name.resolve('/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze/wiki/Cinematography')) {
+  console.log(name)
+  // /ipfs/QmQrX8hka2BtNHa8N8arAq16TCVx5qHcb46c5yPewRycLm
+}
+*/
+
+let curr = '/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze/wiki/index.html'
+console.log(curr)
+
+//curr = await node.resolve(curr)
+
+// const t = await node.resolve('/ipfs/QmPzZpDqsXeeLt4vEB7TuVs622jp5ECHNeKGDxoMxDDDPW/wiki/Books')
+
+//console.log(t)
+
+//const x = await node.get('/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze/wiki/index.html')
+
+
+let res = ''
+/*
+for await (const data of node.cat('/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze/wiki/index.html')) {
+	console.log(data)
+	res += data
+}
+
+console.log(res)
+*/
+
+res = ''
+
+console.log('Here')
+
+for await (const data of node.cat('/ipfs/Qmec2aXss9p42oRj3Beiq9369Hp9rxBmm5SxXKTo7L7tBc/1/0/5/2/10521/10521.txt')) {
+	console.log(data)
+	res += data
+}
+
+
+/*
+res = node.dag.get('/ipfs/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze/wiki/Cinematography')
+*/
+
+console.log(res)
+
+for await (const file of node.ls('/ipfs/Qmec2aXss9p42oRj3Beiq9369Hp9rxBmm5SxXKTo7L7tBc/1/0/100')) {
+  console.log(file)
+  console.log(file.path)
+}
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
